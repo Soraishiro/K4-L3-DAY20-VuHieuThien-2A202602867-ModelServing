@@ -1,0 +1,40 @@
+────────────────────────────────────────────────────────────────
+  Platform : Linux 6.6.87.1-microsoft-standard-WSL2 (x86_64)
+  CPU      : 13th Gen Intel(R) Core(TM) i9-13900H
+             2 physical · 4 logical cores
+             extensions: AVX2
+  RAM      : 7.8 GB
+  GPU      : none detected (CPU only)
+────────────────────────────────────────────────────────────────
+
+  Model         : Qwen3.5 0.8B  [LAB_MODEL=qwen35-0.8b]
+                  unsloth/Qwen3.5-0.8B-GGUF  (~0.9 GB)
+                  primary  Qwen3.5-0.8B-Q4_K_M.gguf  (0.5 GB)
+                  compare  Qwen3.5-0.8B-UD-Q2_K_XL.gguf  (0.39 GB)
+                  chosen because: 7.8 GB RAM is under the 8.0 GB the default model wants
+  Other option  : LAB_MODEL=gemma4-e2b  ->  Gemma 4 E2B, ~5.2 GB, needs 8.0 GB RAM
+  llama.cpp     : prebuilt release b10488  (llama-b10488-bin-ubuntu-x64.tar.gz)
+Traceback (most recent call last):
+  File "/mnt/s/ai20k/K4-Track02-Day20-VuHieuThien-2A202602867-ModelServing-Lab/labs/00-setup/detect-hardware.py", line 278, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/mnt/s/ai20k/K4-Track02-Day20-VuHieuThien-2A202602867-ModelServing-Lab/labs/00-setup/detect-hardware.py", line 236, in main
+    live, why = labkit.gpu_offload_is_live()
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/mnt/s/ai20k/K4-Track02-Day20-VuHieuThien-2A202602867-ModelServing-Lab/lib/labkit.py", line 277, in gpu_offload_is_live
+    hw = hw if hw is not None else load_hardware(required=False)
+                                   ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/mnt/s/ai20k/K4-Track02-Day20-VuHieuThien-2A202602867-ModelServing-Lab/lib/labkit.py", line 200, in load_hardware
+    return json.loads(p.read_text())
+           ~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/sora/miniconda3/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/home/sora/miniconda3/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sora/miniconda3/lib/python3.13/json/decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 16 column 25 (char 331)
+make: *** [Makefile:48: probe] Error 1
